@@ -16,3 +16,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+include_recipe "jenkins::server"
+
+node.override['vagrant']['url']      = node['rs-cookbooks-ci']['vagrant']['url']
+node.override['vagrant']['checksum'] = node['rs-cookbooks-ci']['vagrant']['checksum']
+node.override['vagrant']['plugins']  = node['rs-cookbooks-ci']['vagrant']['plugins'] 
+include_recipe "vagrant"
+
+include_recipe "virtualbox"
