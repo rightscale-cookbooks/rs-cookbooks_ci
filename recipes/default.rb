@@ -16,6 +16,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+node.override['languages']['ruby']['default_version'] = node['rs-cookbooks-ci']['languages']['ruby']['default_version']
+include_recipe "ruby::default"
+
 include_recipe "jenkins::server"
 
 node.override['vagrant']['url']      = node['rs-cookbooks-ci']['vagrant']['url']
