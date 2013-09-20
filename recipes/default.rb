@@ -24,6 +24,10 @@ include_recipe "xml::default"
 node.override['languages']['ruby']['default_version'] = node['rs-cookbooks-ci']['languages']['ruby']['default_version']
 include_recipe "ruby::default"
 
+gem_package "berkshelf" do
+  action :install
+end
+
 include_recipe "jenkins::server"
 
 node.override['vagrant']['url']      = node['rs-cookbooks-ci']['vagrant']['url']
