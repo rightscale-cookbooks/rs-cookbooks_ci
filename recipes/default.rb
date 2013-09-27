@@ -22,6 +22,8 @@ include_recipe "apt::default"
 node.override['languages']['ruby']['default_version'] = node['rs-cookbooks-ci']['languages']['ruby']['default_version']
 include_recipe "ruby::default"
 
+node.override['jenkins']['http_proxy']['server_auth_method'] = node['rs-cookbooks-ci']['jenkins']['http_proxy']['server_auth_method']
+node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins']['server']['plugins']
 include_recipe "jenkins::server"
 
 node.override['vagrant']['url']      = node['rs-cookbooks-ci']['vagrant']['url']
@@ -30,3 +32,6 @@ node.override['vagrant']['plugins']  = node['rs-cookbooks-ci']['vagrant']['plugi
 include_recipe "vagrant"
 
 include_recipe "virtualbox"
+include_recipe "git"
+
+gem_package "bundler"
