@@ -8,7 +8,8 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 
 depends "apt", "~> 2.1.1"
 depends "ruby", "~> 0.9.2"
-depends "jenkins", "~> 1.0.0"
+#depends "jenkins", "~> 1.0.0"
+depends "jenkins"
 depends "vagrant", "~> 0.2.0"
 depends "virtualbox", "~> 1.0.0"
 depends "git", "~> 2.6.0"

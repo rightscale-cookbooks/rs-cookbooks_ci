@@ -22,9 +22,20 @@ include_recipe "apt::default"
 node.override['languages']['ruby']['default_version'] = node['rs-cookbooks-ci']['languages']['ruby']['default_version']
 include_recipe "ruby::default"
 
-node.override['jenkins']['http_proxy']['server_auth_method'] = node['rs-cookbooks-ci']['jenkins']['http_proxy']['server_auth_method']
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins']['server']['plugins']
 include_recipe "jenkins::server"
+
+
+#By default jenkins cookbook should install the latest version but somehow it installs a very old version which makes git unusable til updated
+# jenkins_plugin 'ssh-credentials' do
+#   action :install
+#   version '1.4'
+# end
+# 
+# jenkins_plugin 'ssh-slaves' do
+#   action :install
+#   version '1.2'
+# end
 
 node.override['vagrant']['url']      = node['rs-cookbooks-ci']['vagrant']['url']
 node.override['vagrant']['checksum'] = node['rs-cookbooks-ci']['vagrant']['checksum']

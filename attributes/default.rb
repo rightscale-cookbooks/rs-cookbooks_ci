@@ -7,7 +7,4 @@ default['rs-cookbooks-ci']['vagrant']['checksum'] = "7ec0ee1d00a916f80b109a298ba
 default['rs-cookbooks-ci']['vagrant']['plugins'] = ["vagrant-berkshelf", "vagrant-omnibus"]
 
 #jenkins
-#default['jenkins']['server']['user'] = "qa_user"
-#default['jenkins']['server']['group'] = "ci_group"
-default['rs-cookbooks-ci']['jenkins']['http_proxy']['server_auth_method'] = "basic"
 default['rs-cookbooks-ci']['jenkins']['server']['plugins'] = ["ssh-credentials", "ssh-slaves", "ssh-agent","git-client", "github-api","git", "github"]

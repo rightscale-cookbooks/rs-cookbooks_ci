@@ -77,6 +77,12 @@ Vagrant.configure("2") do |config|
 #         :server_debian_password => 'debpass',
 #         :server_repl_password => 'replpass'
 #       }
+        :jenkins => {
+          :username => 'qa',
+          :password => 'secret11',
+          :user_full_name => 'White QA',
+          :user_email => 'david.vo@rightscale.com'
+        }
     }
                     
     
