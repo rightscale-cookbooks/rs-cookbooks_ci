@@ -19,11 +19,17 @@
 
 include_recipe "apt::default"
 
+include_recipe "xml::default"
+
 node.override['languages']['ruby']['default_version'] = node['rs-cookbooks-ci']['languages']['ruby']['default_version']
 include_recipe "ruby::default"
 
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins']['server']['plugins']
 include_recipe "jenkins::server"
+
+gem_package "berkshelf" do
+  action :install
+end
 
 
 #By default jenkins cookbook should install the latest version but somehow it installs a very old version which makes git unusable til updated
