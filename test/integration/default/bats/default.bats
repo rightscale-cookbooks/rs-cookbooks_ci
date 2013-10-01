@@ -26,7 +26,8 @@ ruby -v | grep 1.9.3
 
 @test "check jenkins running." {
 
-service jenkins status
+service jenkins status | grep "is running"
+ 
 
 }
 
