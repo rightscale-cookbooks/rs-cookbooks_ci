@@ -2,7 +2,7 @@
 
 @test " vagrant installed." {
 
-vagrant -v | grep 1.2.7
+vagrant -v | grep 1.2.7 
 
 }
 
@@ -24,4 +24,9 @@ ruby -v | grep 1.9.3
 
 }
 
+@test "check jenkins running." {
+
+service jenkins status
+
+}
 
