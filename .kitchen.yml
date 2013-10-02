@@ -1,27 +1,19 @@
-ver_plugin: vagrant
+---
+driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
   log_file: /var/log/chef-solo.log
  
 platforms:
-- name: rightimage-ubuntu-12.04
+- name: opscode-ubuntu-12.04 
   driver_config:
-    box: RightImage_Ubuntu_12.04_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/ubuntu/12.04/RightImage_Ubuntu_12.04_x64_v13.5.0.1.box
+    box: opscode-ubuntu-12.04 
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box 
     customize:
       cpus: 2
       memory: 1024
-- name: rightimage-centos-6.4
-  driver_config:
-    box: RightImage_CentOS_6.4_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/centos/6.4/RightImage_CentOS_6.4_x64_v13.5.0.1.box
-    customize:
-      cpus: 2
-      memory: 1024
- 
 suites:
 - name: default
   run_list:
-  - recipe[COOKBOOKNAME::RECIPE1]
-  - recipe[COOKBOOKNAME::RECIPE2]
+  - "recipe[rs-cookbooks-ci::default]"
   attributes: {}
