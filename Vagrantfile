@@ -84,8 +84,8 @@ Vagrant.configure("2") do |config|
           :user_email => 'david.vo@rightscale.com'
         }
     }
-                    
-    
+
+
     #chef.arguments = "--logfile /var/log/chef-solo.log" # The arguments passed to the chef-solo CLI
     chef.run_list = [
         "recipe[rs-cookbooks-ci::default]",
