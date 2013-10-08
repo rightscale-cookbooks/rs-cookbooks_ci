@@ -2,20 +2,8 @@ node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins
 
 include_recipe "jenkins::server"
 
-#Hash of jobs
-jobs = {
-  "marker" => {
-    'git_repo' => "git://github.com/rightscale-cookbooks/marker.git",
-    "git_branch" => "master"
-  },
-  "myface" => {
-    'git_repo' => "git://github.com/amashhour/myface.git",
-    'git_branch' => "master"
-  }
-}
-
 #Iterate through jobs and create a config file for each job.
-jobs.each do |job_name, job_config|
+node[:"rs-cookbooks-ci"][:jenkins][:jobs].each do |job_name, job_config|
 
   jenkins_job job_name do
     action :nothing
@@ -34,6 +22,14 @@ jobs.each do |job_name, job_config|
 
 end
 
-
-
-
+#Create Git credentials
+template node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_config] do
+  source 'git_config.xml.erb'
+  owner 'jenkins'
+  group 'jenkins'
+  mode 0644
+  variables({
+    :git_username => node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_username],
+    :git_email => node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_email]
+  })
+end

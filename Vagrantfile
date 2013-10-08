@@ -72,16 +72,30 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      # :mysql => {
-#         :server_root_password => 'rootpass',
-#         :server_debian_password => 'debpass',
-#         :server_repl_password => 'replpass'
-#       }
         :jenkins => {
           :username => 'qa',
           :password => 'secret11',
           :user_full_name => 'White QA',
           :user_email => 'david.vo@rightscale.com'
+        },
+        :"rs-cookbooks-ci" => {
+          :jenkins => {
+            :jobs => {
+              :marker => {
+                :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
+                :git_branch => 'master'
+              },
+              :myface => {
+                :git_repo => 'git://github.com/amashhour/myface.git',
+                :git_branch => 'master'
+              }
+            },
+            :git_setup => {
+              :git_config => "/var/lib/jenkins/hudson.plugins.git.GitSCM.xml",
+              :git_username => "david-vo",
+              :git_email => "david.vo@rightscale.com"
+            }
+          }
         }
     }
 
