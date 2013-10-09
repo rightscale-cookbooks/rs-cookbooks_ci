@@ -18,6 +18,12 @@ vagrant plugin list | grep vagrant-omnibus
 
 } 
 
+@test "check the vagrant-plugin-bundler." {
+
+vagrant plugin list | grep vagrant-plugin-bundler
+
+}
+
 @test "ruby installed." { 
 
 ruby -v | grep 1.9.3
@@ -30,4 +36,18 @@ service jenkins status | grep "is running"
  
 
 }
+
+@test "jenkins user/group is created " {
+
+grep "jenkins" /etc/passwd
+grep "jenkins" /etc/group
+
+}
+ 
+@test "vitrualbox is installed" {
+
+dpkg -l | grep virtualbox
+
+}
+
 

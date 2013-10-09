@@ -26,3 +26,15 @@ include_recipe "git"
 include_recipe "xml"
 
 gem_package "bundler"
+
+
+
+
+#user "qaadmin" do
+#  group "adm"
+#  system true
+#  shell "/bin/bash"
+#end
+
+
+
