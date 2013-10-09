@@ -1,9 +1,15 @@
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins']['server']['plugins']
 
+# Add overrides for Jenkins username and password for login
+node.override['jenkins']['username'] = node['rs-cookbooks-ci']['jenkins']['username']
+node.override['jenkins']['password'] = node['rs-cookbooks-ci']['jenkins']['password']
+node.override['jenkins']['user_full_name'] = node['rs-cookbooks-ci']['jenkins']['user_full_name']
+node.override['jenkins']['user_email'] = node['rs-cookbooks-ci']['jenkins']['user_email']
+
 include_recipe "jenkins::server"
 
-#Iterate through jobs and create a config file for each job.
-node[:"rs-cookbooks-ci"][:jenkins][:jobs].each do |job_name, job_config|
+# Iterate through jobs and create a config file for each job.
+node['rs-cookbooks-ci']['jenkins']['jobs'].each do |job_name, job_config|
 
   jenkins_job job_name do
     action :nothing
@@ -14,22 +20,22 @@ node[:"rs-cookbooks-ci"][:jenkins][:jobs].each do |job_name, job_config|
     source 'job_config.xml.erb'
     mode 0644
     variables({
-      :git_repo => job_config["git_repo"],
-      :git_branch => job_config["git_branch"]
+      :git_repo => job_config['git_repo'],
+      :git_branch => job_config['git_branch']
     })
     notifies  :update, resources(:jenkins_job => job_name), :immediately
   end
 
 end
 
-#Create Git credentials
-template node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_config] do
+# Create Git credentials
+template node['rs-cookbooks-ci']['jenkins']['git_setup']['git_config'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
   mode 0644
   variables({
-    :git_username => node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_username],
-    :git_email => node[:"rs-cookbooks-ci"][:jenkins][:git_setup][:git_email]
+    :git_username => node['rs-cookbooks-ci']['jenkins']['git_setup']['git_username'],
+    :git_email => node['rs-cookbooks-ci']['jenkins']['git_setup']['git_email']
   })
 end

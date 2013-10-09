@@ -12,7 +12,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "rs-cookbooks-ci-berkshelf"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "opscodeUbuntu1204"
+  config.vm.box = "opscode-ubuntu-12.04"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -72,14 +72,12 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-        :jenkins => {
-          :username => 'qa',
-          :password => 'secret11',
-          :user_full_name => 'White QA',
-          :user_email => 'david.vo@rightscale.com'
-        },
         :"rs-cookbooks-ci" => {
           :jenkins => {
+            :username => 'qa',
+            :password => 'secret11',
+            :user_full_name => 'White Team QA',
+            :user_email => 'whiteqa@rightscale.com',
             :jobs => {
               :marker => {
                 :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
@@ -87,9 +85,8 @@ Vagrant.configure("2") do |config|
               }
             },
             :git_setup => {
-              :git_config => "/var/lib/jenkins/hudson.plugins.git.GitSCM.xml",
-              :git_username => "david-vo",
-              :git_email => "david.vo@rightscale.com"
+              :git_username => 'rightscale-cookbooks-jenkins',
+              :git_email => 'cookbooks@rightscale.com'
             }
           }
         }
@@ -98,7 +95,7 @@ Vagrant.configure("2") do |config|
 
     #chef.arguments = "--logfile /var/log/chef-solo.log" # The arguments passed to the chef-solo CLI
     chef.run_list = [
-        "recipe[rs-cookbooks-ci::default]",
+        'recipe[rs-cookbooks-ci::default]',
     ]
   end
 end
