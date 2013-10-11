@@ -16,6 +16,8 @@ depends "virtualbox", "~> 1.0.0"
 depends "git", "~> 2.6.0"
 depends "xml"
 
+recipe "rs-cookbooks::default",
+  "Default recipe to install rs-cookbooks_ci"
 recipe "rs-cookbooks_ci::jenkins",
   "Installs Jenkins, required plugins, and sets up jobs"
 recipe "rs-cookbooks_ci::ruby",
