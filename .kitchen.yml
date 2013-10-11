@@ -15,5 +15,18 @@ platforms:
 suites:
 - name: default
   run_list:
-  - "recipe[rs-cookbooks-ci::default]"
-  attributes: {}
+  - "recipe[rs-cookbooks_ci::default]"
+  attributes: 
+      rs-cookbooks_ci:
+          jenkins:
+              username: 'qa'
+              password: 'secret11'
+              user_full_name: 'White Team QA'
+              user_email: 'white@rightscale.com'
+              jobs:
+                  marker:
+                     git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
+                     git_branch: 'master'
+              git_setup:
+                  git_username: 'rightscale-cookbooks-jenkins'
+                  git_email:  'cookbooks@rightscale.com'
