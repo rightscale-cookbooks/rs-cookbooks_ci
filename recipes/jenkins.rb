@@ -1,15 +1,15 @@
-node.override['jenkins']['server']['plugins'] = node['rs-cookbooks-ci']['jenkins']['server']['plugins']
+node.override['jenkins']['server']['plugins'] = node['rs-cookbooks_ci']['jenkins']['server']['plugins']
 
 # Add overrides for Jenkins username and password for login
-node.override['jenkins']['username'] = node['rs-cookbooks-ci']['jenkins']['username']
-node.override['jenkins']['password'] = node['rs-cookbooks-ci']['jenkins']['password']
-node.override['jenkins']['user_full_name'] = node['rs-cookbooks-ci']['jenkins']['user_full_name']
-node.override['jenkins']['user_email'] = node['rs-cookbooks-ci']['jenkins']['user_email']
+node.override['jenkins']['username'] = node['rs-cookbooks_ci']['jenkins']['username']
+node.override['jenkins']['password'] = node['rs-cookbooks_ci']['jenkins']['password']
+node.override['jenkins']['user_full_name'] = node['rs-cookbooks_ci']['jenkins']['user_full_name']
+node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['user_email']
 
 include_recipe "jenkins::server"
 
 # Iterate through jobs and create a config file for each job.
-node['rs-cookbooks-ci']['jenkins']['jobs'].each do |job_name, job_config|
+node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
   jenkins_job job_name do
     action :nothing
@@ -29,13 +29,13 @@ node['rs-cookbooks-ci']['jenkins']['jobs'].each do |job_name, job_config|
 end
 
 # Create Git credentials
-template node['rs-cookbooks-ci']['jenkins']['git_setup']['git_config'] do
+template node['rs-cookbooks_ci']['jenkins']['git_setup']['git_config'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
   mode 0644
   variables({
-    :git_username => node['rs-cookbooks-ci']['jenkins']['git_setup']['git_username'],
-    :git_email => node['rs-cookbooks-ci']['jenkins']['git_setup']['git_email']
+    :git_username => node['rs-cookbooks_ci']['jenkins']['git_setup']['git_username'],
+    :git_email => node['rs-cookbooks_ci']['jenkins']['git_setup']['git_email']
   })
 end

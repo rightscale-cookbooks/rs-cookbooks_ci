@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'ridley', '~> 1.5.0'
-gem 'berkshelf'
+gem 'ridley', '~> 1.5.3'
+gem 'berkshelf', '~> 2.0.10'
 gem 'thor-foodcritic'
 gem 'thor-scmversion'
 gem 'strainer'

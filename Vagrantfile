@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.hostname = "rs-cookbooks-ci-berkshelf"
+  config.vm.hostname = "rs-cookbooks-ci"
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "opscode-ubuntu-12.04"
@@ -72,7 +72,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-        :"rs-cookbooks-ci" => {
+        :"rs-cookbooks_ci" => {
           :jenkins => {
             :username => 'qa',
             :password => 'secret11',
@@ -95,7 +95,7 @@ Vagrant.configure("2") do |config|
 
     #chef.arguments = "--logfile /var/log/chef-solo.log" # The arguments passed to the chef-solo CLI
     chef.run_list = [
-        'recipe[rs-cookbooks-ci::default]',
+        'recipe[rs-cookbooks_ci::default]',
     ]
   end
 end

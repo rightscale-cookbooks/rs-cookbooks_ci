@@ -1,2 +1,2 @@
 # ruby
-default['rs-cookbooks-ci']['languages']['ruby']['default_version'] = "1.9.1"
+default['rs-cookbooks_ci']['languages']['ruby']['default_version'] = "1.9.1"
