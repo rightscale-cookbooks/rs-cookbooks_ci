@@ -20,6 +20,8 @@ depends "xml"
 
 recipe "rs-cookbooks::default",
   "Default recipe to install rs-cookbooks_ci"
+recipe "rs-cookbooks::build-essentials",
+  "Installs compile tools to help with bcrypt-ruby gem required by users recipe in Jenkins cookbook"
 recipe "rs-cookbooks_ci::jenkins",
   "Installs Jenkins, required plugins, and sets up jobs"
 recipe "rs-cookbooks_ci::ruby",
