@@ -10,7 +10,6 @@ supports "ubuntu"
 
 depends "apt", "~> 2.1.1"
 depends "build-essential"
->>>>>>> Adding a depends for build-essential cookbook
 depends "ruby", "~> 0.9.2"
 depends "jenkins"
 depends "vagrant", "~> 0.2.0"
