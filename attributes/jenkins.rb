@@ -1,5 +1,6 @@
 #jenkins
 default['rs-cookbooks_ci']['jenkins']['server']['plugins'] = [
+  "credentials",
   "ssh-credentials",
   "ssh-slaves",
   "ssh-agent",
