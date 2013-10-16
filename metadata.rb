@@ -9,7 +9,8 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 supports "ubuntu"
 
 depends "apt", "~> 2.1.1"
-depends "xml", "~> 1.1.2"
+depends "build-essential"
+>>>>>>> Adding a depends for build-essential cookbook
 depends "ruby", "~> 0.9.2"
 depends "jenkins"
 depends "vagrant", "~> 0.2.0"
@@ -17,6 +18,10 @@ depends "virtualbox", "~> 1.0.0"
 depends "git", "~> 2.6.0"
 depends "xml"
 
+recipe "rs-cookbooks::default",
+  "Default recipe to install rs-cookbooks_ci"
+recipe "rs-cookbooks::build-essentials",
+  "Installs compile tools to help with bcrypt-ruby gem required by users recipe in Jenkins cookbook"
 recipe "rs-cookbooks_ci::jenkins",
   "Installs Jenkins, required plugins, and sets up jobs"
 recipe "rs-cookbooks_ci::ruby",
