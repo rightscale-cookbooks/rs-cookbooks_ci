@@ -2,18 +2,21 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+
+  config.omnibus.chef_version = :latest
+
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  config.vm.hostname = "rs-cookbooks-ci-berkshelf"
+  config.vm.hostname = "rs-cookbooks-ci"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "RightImage_Ubuntu_12.04_x64_v13.5.0.1"
+  config.vm.box = "opscode-ubuntu-12.04"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "https://rightscale-vagrant.s3.amazonaws.com/virtualbox/ubuntu/12.04/RightImage_Ubuntu_12.04_x64_v13.5.0.1.box"
+  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
@@ -41,19 +44,16 @@ Vagrant.configure("2") do |config|
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
   #
-  # config.vm.provider :virtualbox do |vb|
+ config.vm.provider :virtualbox do |vb|
   #   # Don't boot with headless mode
   #   vb.gui = true
   #
   #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
+   vb.customize ["modifyvm", :id, "--memory", "1024"]
+ end
   #
   # View the documentation for the provider you're using for more
   # information on available options.
-
-  config.ssh.max_tries = 40
-  config.ssh.timeout   = 120
 
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
@@ -72,15 +72,30 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-      :mysql => {
-        :server_root_password => 'rootpass',
-        :server_debian_password => 'debpass',
-        :server_repl_password => 'replpass'
-      }
+        :"rs-cookbooks_ci" => {
+          :jenkins => {
+            :username => 'qa',
+            :password => 'secret11',
+            :user_full_name => 'White Team QA',
+            :user_email => 'whiteqa@rightscale.com',
+            :jobs => {
+              :marker => {
+                :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
+                :git_branch => 'master'
+              }
+            },
+            :git_setup => {
+              :git_username => 'rightscale-cookbooks-jenkins',
+              :git_email => 'cookbooks@rightscale.com'
+            }
+          }
+        }
     }
-    chef.arguments = "--logfile /var/log/chef-solo.log" # The arguments passed to the chef-solo CLI
+
+
+    #chef.arguments = "--logfile /var/log/chef-solo.log" # The arguments passed to the chef-solo CLI
     chef.run_list = [
-        "recipe[rs-cookbooks-ci::default]"
+        "recipe[rs-cookbooks_ci::default]"
     ]
   end
 end
