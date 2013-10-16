@@ -3,12 +3,12 @@ driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
   log_file: /var/log/chef-solo.log
- 
+
 platforms:
-- name: opscode-ubuntu-12.04 
+- name: opscode-ubuntu-12.04
   driver_config:
-    box: opscode-ubuntu-12.04 
-    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box 
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
     customize:
       cpus: 2
       memory: 1024

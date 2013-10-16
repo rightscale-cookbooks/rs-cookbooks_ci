@@ -1,5 +1,6 @@
 #jenkins
 default['rs-cookbooks_ci']['jenkins']['server']['plugins'] = [
+  "credentials",
   "ssh-credentials",
   "ssh-slaves",
   "ssh-agent",
@@ -9,4 +10,5 @@ default['rs-cookbooks_ci']['jenkins']['server']['plugins'] = [
   "github",
   "ansicolor"
 ]
+
 default['rs-cookbooks_ci']['jenkins']['git_setup']['git_config'] = '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'
