@@ -8,15 +8,21 @@ vagrant -v | grep 1.2.7
 
 @test "berkshelf installed." {
 
-vagrant plugin list | grep vagrant-berkshelf
+sudo -i -u  jenkins vagrant plugin list | grep vagrant-berkshelf
 
 }
 
 @test "Check the omnibus plugin for Vagrant." {
 
-vagrant plugin list | grep vagrant-omnibus
+sudo -i -u  jenkins vagrant plugin list | grep vagrant-omnibus
 
 } 
+
+@test "check the bindlwe plugin for vagrant" {
+
+sudo -i -u jenkins vagrant plugin list | grep bindler
+
+}
 
 @test "ruby installed." { 
 
