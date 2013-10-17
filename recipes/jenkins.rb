@@ -23,7 +23,6 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
       :git_repo => job_config['git_repo'],
       :git_branch => job_config['git_branch']
     })
-    # notifies  :update, resources(:jenkins_job => job_name), :immediately
     notifies :update, "jenkins_job[#{job_name}]", :immediately
   end
 

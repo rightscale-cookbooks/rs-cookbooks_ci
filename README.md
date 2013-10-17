@@ -1,5 +1,5 @@
 # rs-cookbooks-ci cookbook
-[![Build Status](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci.png)](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci)
+[![Build Status](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci)
 
 # Requirements
 
