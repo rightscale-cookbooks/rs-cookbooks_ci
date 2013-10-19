@@ -5,12 +5,16 @@
 }
 
 @test "Check that the vagrant-berkshelf plugin is installed" {
-  vagrant plugin list | grep vagrant-berkshelf
+  sudo -i -u jenkins vagrant plugin list | grep vagrant-berkshelf
 }
 
 @test "Check that the vagrant-omnibus plugin is installed" {
-  vagrant plugin list | grep vagrant-omnibus
+  sudo -i -u jenkins vagrant plugin list | grep vagrant-omnibus
 }
+
+@test "chek that the vagrant-bindler plugin is installed" {
+  sudo -i -u jenkins vagrant plugin list | grep bindler
+} 
 
 @test "Check that Ruby is installed" {
   ruby -v | grep 1.9.3
