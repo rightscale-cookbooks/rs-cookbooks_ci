@@ -12,7 +12,7 @@
   sudo -i -u jenkins vagrant plugin list | grep vagrant-omnibus
 }
 
-@test "chek that the vagrant-bindler plugin is installed" {
+@test "Check that the bindler plugin is installed" {
   sudo -i -u jenkins vagrant plugin list | grep bindler
 } 
 
