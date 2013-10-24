@@ -36,16 +36,6 @@ recipe "rs-cookbooks_ci::virtualbox",
 recipe "rs-cookbooks_ci::git",
   "Installs Git"
 
-# attribute "rs-cookbooks_ci/build_essential/compiletime",
-#   :display_name => "Build Essential Compiletime Flag",
-#   :description => "Sets resources to be configured at the Compile phase of Chef run",
-#   :required => "required",
-#   :recipes => [
-#     "rs-cookbooks_ci::default",
-#     "rs-cookbooks_ci::build-essential"
-#   ],
-#   :default => true
-
 attribute "rs-cookbooks_ci/languages/ruby/default_version",
   :display_name => "Ruby Default Version",
   :description => "The default version of Ruby to be installed",
@@ -83,22 +73,20 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/git_config",
 attribute "rs-cookbooks_ci/jenkins/username",
   :display_name => "Jenkins Username",
   :description => "Username used to login to Jenkins server",
-  :required => "recommended",
+  :required => "required",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
-  ],
-  :default => 'qa'
+  ]
 
 attribute "rs-cookbooks_ci/jenkins/password",
   :display_name => "Jenkins Password",
   :description => "Password used to login to Jenkins server",
-  :required => "recommended",
+  :required => "required",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
-  ],
-  :default => 'secret11'
+  ]
 
 attribute "rs-cookbooks_ci/jenkins/user_full_name",
   :display_name => "Jenkins Full Username",
