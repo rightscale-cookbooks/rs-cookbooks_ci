@@ -22,7 +22,7 @@ recipe "rs-cookbooks_ci::default",
 recipe "rs-cookbooks_ci::apt",
   "Executes apt-get update to ensure the local package cache is up to date"
 recipe "rs-cookbooks_ci::xml",
-  "Installes development packages for libxml"
+  "Installs development packages for libxml"
 recipe "rs-cookbooks_ci::build-essentials",
   "Installs compile tools to help with bcrypt-ruby gem required by users recipe in Jenkins cookbook"
 recipe "rs-cookbooks_ci::ruby",
