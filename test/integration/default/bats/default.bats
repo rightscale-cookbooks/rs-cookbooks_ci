@@ -32,3 +32,8 @@
 @test "Check that virtualbox is installed" {
   dpkg -l | grep virtualbox
 }
+
+@test "check that git is installed" {
+  sudo -i -u jenkins git --version
+}
+
