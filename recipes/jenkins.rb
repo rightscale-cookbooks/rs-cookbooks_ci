@@ -8,7 +8,7 @@ node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['use
 
 include_recipe "jenkins::server"
 
-# Iterate through jobs and create a config file for each job.
+# Iterate through jobs and create a config file for each job. Store this file in Jenkins.
 node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
   jenkins_job job_name do
@@ -28,7 +28,7 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
 end
 
-# Create Git credentials
+# Create Git credentials using a template and store it as a config file in the Jenkins root
 template node['rs-cookbooks_ci']['jenkins']['git_setup']['git_config'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
