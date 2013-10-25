@@ -60,7 +60,7 @@ attribute "rs-cookbooks_ci/jenkins/server/plugins",
     "bindler"
    ]
 
-attribute "rs-cookbooks_ci/jenkins/git_setup/git_config",
+attribute "rs-cookbooks_ci/jenkins/git_setup/config_file",
   :display_name => "Jenkins Git configuration file",
   :description => "Git configuration file that Jenkins uses to read username and password",
   :required => "required",
@@ -106,7 +106,7 @@ attribute "rs-cookbooks_ci/jenkins/user_email",
     "rs-cookbooks_ci::jenkins"
   ]
 
-attribute "rs-cookbooks_ci/jenkins/git_setup/git_username",
+attribute "rs-cookbooks_ci/jenkins/git_setup/username",
   :display_name => "Git username",
   :description => "Git username, required for code checkout",
   :required => "required",
@@ -116,7 +116,7 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/git_username",
   ],
   :default => "cookbook-tester"
 
-attribute "rs-cookbooks_ci/jenkins/git_setup/git_email",
+attribute "rs-cookbooks_ci/jenkins/git_setup/email",
   :display_name => "Git user email address",
   :description => "Git email address, required for code checkout",
   :required => "required",

@@ -14,4 +14,4 @@ default['rs-cookbooks_ci']['jenkins']['server']['plugins'] = [
 
 # Specifies path of configuration file created when a user sets a Git username and email. This is required by the
 # Jenkins Git plugin to operate. This file is created automatically by a template.
-default['rs-cookbooks_ci']['jenkins']['git_setup']['git_config'] = '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'
+default['rs-cookbooks_ci']['jenkins']['git_setup']['config_file'] = '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'

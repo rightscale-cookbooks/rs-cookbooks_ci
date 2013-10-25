@@ -85,8 +85,8 @@ Vagrant.configure("2") do |config|
               }
             },
             :git_setup => {
-              :git_username => 'rightscale-cookbooks-jenkins',
-              :git_email => 'cookbooks@rightscale.com'
+              :username => 'rightscale-cookbooks-jenkins',
+              :email => 'cookbooks@rightscale.com'
             }
           }
         }
