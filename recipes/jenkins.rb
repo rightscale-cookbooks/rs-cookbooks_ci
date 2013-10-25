@@ -28,14 +28,14 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
 end
 
-# Create Git credentials
-template node['rs-cookbooks_ci']['jenkins']['git_setup']['git_config'] do
+# Create Git credentials using a template and store it as a config file in the Jenkins root
+template node['rs-cookbooks_ci']['jenkins']['git_setup']['config_file'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
   mode 0644
   variables({
-    :git_username => node['rs-cookbooks_ci']['jenkins']['git_setup']['git_username'],
-    :git_email => node['rs-cookbooks_ci']['jenkins']['git_setup']['git_email']
+    :git_username => node['rs-cookbooks_ci']['jenkins']['git_setup']['username'],
+    :git_email => node['rs-cookbooks_ci']['jenkins']['git_setup']['email']
   })
 end
