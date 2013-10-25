@@ -8,7 +8,7 @@ node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['use
 
 include_recipe "jenkins::server"
 
-# Iterate through jobs and create a config file for each job. Store this file in Jenkins.
+# Iterate through jobs and create a config file for each job.
 node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
   jenkins_job job_name do
