@@ -109,7 +109,7 @@ attribute "rs-cookbooks_ci/jenkins/user_email",
 attribute "rs-cookbooks_ci/jenkins/git_setup/git_username",
   :display_name => "Git username",
   :description => "Git username, required for code checkout",
-  :required => "required",
+  :required => "recommended",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
@@ -119,7 +119,7 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/git_username",
 attribute "rs-cookbooks_ci/jenkins/git_setup/git_email",
   :display_name => "Git user email address",
   :description => "Git email address, required for code checkout",
-  :required => "required",
+  :required => "recommended",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
