@@ -81,7 +81,8 @@ Vagrant.configure("2") do |config|
             :jobs => {
               :marker => {
                 :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
-                :git_branch => 'master'
+                :git_branch => 'master',
+                :git_project_url => 'https://github.com/rightscale-cookbooks/marker/'
               }
             },
             :git_setup => {
