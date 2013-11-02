@@ -21,7 +21,8 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
     mode 0644
     variables({
       :git_repo => job_config['git_repo'],
-      :git_branch => job_config['git_branch']
+      :git_branch => job_config['git_branch'],
+      :git_project_url => job_config['git_project_url']
     })
     notifies :update, "jenkins_job[#{job_name}]", :immediately
   end
