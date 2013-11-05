@@ -1,3 +1,6 @@
+node.override['jenkins']['server']['version'] = node['rs-cookbooks_ci']['jenkins']['server']['version']
+node.override['jenkins']['server']['install_method'] = node['rs-cookbooks_ci']['jenkins']['server']['install_method']
+
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks_ci']['jenkins']['server']['plugins']
 
 # Add overrides for Jenkins username and password for login
