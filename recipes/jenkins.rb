@@ -1,3 +1,6 @@
+node.override['jenkins']['server']['version'] = node['rs-cookbooks_ci']['jenkins']['server']['version']
+node.override['jenkins']['server']['install_method'] = node['rs-cookbooks_ci']['jenkins']['server']['install_method']
+
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks_ci']['jenkins']['server']['plugins']
 
 # Add overrides for Jenkins username and password for login
@@ -8,9 +11,9 @@ node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['use
 
 # Create directory that the jenkins debian package requires. This is a temporary fix because of a bug in the package.
 # This broke in Jenkins 1.538
-directory "/var/run/jenkins" do
-  action :create
-end
+# directory "/var/run/jenkins" do
+#   action :create
+# end
 
 include_recipe "jenkins::server"
 
