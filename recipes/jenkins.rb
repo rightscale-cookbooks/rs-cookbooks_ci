@@ -9,12 +9,6 @@ node.override['jenkins']['password'] = node['rs-cookbooks_ci']['jenkins']['passw
 node.override['jenkins']['user_full_name'] = node['rs-cookbooks_ci']['jenkins']['user_full_name']
 node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['user_email']
 
-# Create directory that the jenkins debian package requires. This is a temporary fix because of a bug in the package.
-# This broke in Jenkins 1.538
-# directory "/var/run/jenkins" do
-#   action :create
-# end
-
 include_recipe "jenkins::server"
 
 # Iterate through jobs and create a config file for each job.
