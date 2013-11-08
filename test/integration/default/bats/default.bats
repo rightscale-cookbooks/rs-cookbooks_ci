@@ -21,7 +21,7 @@
 }
 
 @test "Check that the jenkins service running" {
-  service jenkins status | grep "is running"
+  service jenkins status | grep "run: jenkins"
 }
 
 @test "Check that the jenkins user/group was created" {
