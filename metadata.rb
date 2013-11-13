@@ -9,10 +9,10 @@ version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')) rescue '0
 supports "ubuntu"
 
 depends "apt", "~> 2.3.0"
-depends "xml"
+depends "xml", "~> 1.2.0"
 depends "build-essential"
-depends "ruby", "~> 0.9.2"
-depends "jenkins"
+depends "ruby", "~> 0.9.0"
+depends "jenkins", "~> 1.2.0"
 depends "vagrant", "~> 0.2.0"
 depends "virtualbox", "~> 1.0.0"
 depends "git", "~> 2.7.0"
