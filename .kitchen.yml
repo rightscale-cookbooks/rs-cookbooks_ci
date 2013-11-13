@@ -22,7 +22,7 @@ suites:
         username: 'qa'
         password: 'secret11'
         user_full_name: 'White Team QA'
-        user_email: 'white@rightscale.com'
+        user_email: 'whiteqa@rightscale.com'
         jobs:
           marker:
             git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
