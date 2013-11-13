@@ -23,7 +23,7 @@ recipe "rs-cookbooks_ci::apt",
   "Executes apt-get update to ensure the local package cache is up to date"
 recipe "rs-cookbooks_ci::xml",
   "Installs development packages for libxml"
-recipe "rs-cookbooks_ci::build-essentials",
+recipe "rs-cookbooks_ci::build-essential",
   "Installs compile tools to help with bcrypt-ruby gem required by users recipe in Jenkins cookbook"
 recipe "rs-cookbooks_ci::ruby",
     "Installs ruby"
@@ -34,41 +34,7 @@ recipe "rs-cookbooks_ci::vagrant",
 recipe "rs-cookbooks_ci::virtualbox",
   "Installs Virtualbox"
 recipe "rs-cookbooks_ci::git",
-  "Installs Git"
-
-attribute "rs-cookbooks_ci/languages/ruby/default_version",
-  :display_name => "Ruby Default Version",
-  :description => "The default version of Ruby to be installed",
-  :required => "recommended",
-  :recipes => [
-    "rs-cookbooks_ci::default",
-    "rs-cookbooks_ci::ruby"
-    ],
-  :default => "1.9.1"
-
-attribute "rs-cookbooks_ci/jenkins/server/plugins",
-  :display_name => "Jenkins Plugins",
-  :description => "Jenkins plugins to be installed initially",
-  :required => "required",
-  :recipes => [
-    "rs-cookbooks_ci::default",
-    "rs-cookbooks_ci::jenkins"
-    ],
-  :default => [
-    "vagrant-berkshelf",
-    "vagrant-omnibus",
-    "bindler"
-   ]
-
-attribute "rs-cookbooks_ci/jenkins/git_setup/config_file",
-  :display_name => "Jenkins Git configuration file",
-  :description => "Git configuration file that Jenkins uses to read username and password",
-  :required => "required",
-  :recipes => [
-    "rs-cookbooks_ci::default",
-    "rs-cookbooks_ci::jenkins"
-  ],
-  :default => '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'
+  "Installs Git SCM"
 
 attribute "rs-cookbooks_ci/jenkins/username",
   :display_name => "Jenkins Username",
@@ -125,18 +91,3 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/email",
     "rs-cookbooks_ci::jenkins"
   ],
   :default => "cookbook-tester@mycompany.com"
-
-attribute "rs-cookbooks_ci/jenkins/vagrant/plugins",
-  :display_name => "Vagrant plugin list",
-  :description => "Vagrant plugins you want installed",
-  :required => "required",
-  :type => "array",
-  :recipes => [
-    "rs-cookbooks_ci::default",
-    "rs-cookbooks_ci::vagrant"
-  ],
-  :default => [
-    "vagrant-berkshelf",
-    "vagrant-omnibus",
-    "bindler"
-  ]
