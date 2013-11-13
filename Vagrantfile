@@ -78,7 +78,7 @@ Vagrant.configure("2") do |config|
       :"rs-cookbooks_ci" => {
         :jenkins => {
           :username => 'qa',
-          :password => 'secret11',
+          :password => 'qapass',
           :user_full_name => 'White Team QA',
           :user_email => 'whiteqa@rightscale.com',
           :jobs => {
