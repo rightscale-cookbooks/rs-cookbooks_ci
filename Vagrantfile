@@ -3,8 +3,6 @@
 
 Vagrant.configure("2") do |config|
 
-  config.omnibus.chef_version = :latest
-
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
@@ -69,6 +67,8 @@ Vagrant.configure("2") do |config|
   # An array of symbols representing groups of cookbook described in the Vagrantfile
   # to skip installing and copying to Vagrant's shelf.
   # config.berkshelf.except = []
+
+  config.omnibus.chef_version = :latest
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
