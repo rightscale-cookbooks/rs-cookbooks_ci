@@ -53,6 +53,9 @@ Vagrant.configure("2") do |config|
   # View the documentation for the provider you're using for more
   # information on available options.
 
+  config.ssh.max_tries = 40
+  config.ssh.timeout   = 120
+
   # The path to the Berksfile to use with Vagrant Berkshelf
   # config.berkshelf.berksfile_path = "./Berksfile"
 
@@ -72,25 +75,25 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {
-        :"rs-cookbooks_ci" => {
-          :jenkins => {
-            :username => 'qa',
-            :password => 'secret11',
-            :user_full_name => 'White Team QA',
-            :user_email => 'whiteqa@rightscale.com',
-            :jobs => {
-              :marker => {
-                :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
-                :git_branch => 'master',
-                :git_project_url => 'https://github.com/rightscale-cookbooks/marker'
-              }
-            },
-            :git_setup => {
-              :username => 'rightscale-cookbooks-jenkins',
-              :email => 'cookbooks@rightscale.com'
+      :"rs-cookbooks_ci" => {
+        :jenkins => {
+          :username => 'qa',
+          :password => 'secret11',
+          :user_full_name => 'White Team QA',
+          :user_email => 'whiteqa@rightscale.com',
+          :jobs => {
+            :marker => {
+              :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
+              :git_branch => 'master',
+              :git_project_url => 'https://github.com/rightscale-cookbooks/marker'
             }
+          },
+          :git_setup => {
+            :username => 'rightscale-cookbooks-jenkins',
+            :email => 'cookbooks@rightscale.com'
           }
         }
+      }
     }
 
 
