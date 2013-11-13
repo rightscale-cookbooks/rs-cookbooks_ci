@@ -70,6 +70,6 @@
 }
 
 @test "Check the correct version of git" {
-  git --version
+  git --version | grep 1.7.9.5
 }
 
