@@ -8,7 +8,7 @@
 }
 
 @test "Check the correct version for vagrant" {
-  vagrant --version | grep 1.2.7
+  vagrant --version | grep 1\.2\.7
 }
 
 
@@ -34,7 +34,7 @@
 }
 
 @test "Check correct version of ruby" {
-  ruby -v | grep 1.9.3
+  ruby -v | grep 1\.9\.3
 }
 
 
@@ -68,8 +68,3 @@
 @test "Check that git is installed" {
   which git
 }
-
-@test "Check the correct version of git" {
-  git --version | grep 1.7.9.5
-}
-
