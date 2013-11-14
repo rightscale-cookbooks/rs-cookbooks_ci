@@ -79,8 +79,7 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/username",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
-  ],
-  :default => "cookbook-tester"
+  ]
 
 attribute "rs-cookbooks_ci/jenkins/git_setup/email",
   :display_name => "Git user email address",
@@ -89,5 +88,4 @@ attribute "rs-cookbooks_ci/jenkins/git_setup/email",
   :recipes => [
     "rs-cookbooks_ci::default",
     "rs-cookbooks_ci::jenkins"
-  ],
-  :default => "cookbook-tester@mycompany.com"
+  ]
