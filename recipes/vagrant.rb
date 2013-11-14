@@ -24,7 +24,7 @@ include_recipe "vagrant"
 
 # TODO: Remove this workaround after upgrading to Vagrant 1.3.X
 # When running `vagrant plugin install vagrant-berkshelf` there is a problem
-# with pulling in nokogiri. It fails during the build error.
+# with pulling in nokogiri. It fails during the build.
 
 execute "install nokogiri" do
   command 'gem install nokogiri --no-rdoc --no-ri --install-dir /var/lib/jenkins/.vagrant.d/gems'
@@ -32,6 +32,7 @@ execute "install nokogiri" do
   environment(
     'GEM_PATH' => '/var/lib/jenkins/.vagrant.d/gems'
   )
+  not_if { ::Kernel.system("GEM_PATH=/var/lib/jenkins/.vagrant.d/gems gem list | grep nokogiri") }
 end
 
 node['rs-cookbooks_ci']['vagrant']['plugins'].each do |plug_name|
@@ -39,5 +40,3 @@ node['rs-cookbooks_ci']['vagrant']['plugins'].each do |plug_name|
     user 'jenkins'
   end
 end
-
-
