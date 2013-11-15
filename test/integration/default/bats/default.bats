@@ -40,7 +40,7 @@
   service jenkins status
 }
 
-# Check taht the jenkins user and group exist
+# Check that the jenkins user and group exist
 
 @test "Check that the jenkins user was created" {
   grep "jenkins" /etc/passwd
