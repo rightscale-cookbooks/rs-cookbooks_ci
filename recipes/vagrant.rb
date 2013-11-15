@@ -17,22 +17,8 @@
 # limitations under the License.
 #
 
-calculate_vagrant_url = ruby_block "get_sha_from_github" do
-  block do
-    require 'json'
-    file_name = "vagrant_#{node['rs-cookbooks_ci']['vagrant']['version']}_x86_64.deb"
-    get_sha = Mixlib::ShellOut.new(
-      "wget https://api.github.com/repos/mitchellh/vagrant/git/refs/tags/v#{node['rs-cookbooks_ci']['vagrant']['version']}" +
-      " -O /tmp/temp.json"
-    )
-    get_sha.run_command
-    hash = JSON.load(IO.read("/tmp/temp.json"))
-    node.set['vagrant']['checksum'] = hash['object']['sha']
-    node.set['vagrant']['url'] = "http://files.vagrantup.com/packages/#{hash['object']['sha']}/#{file_name}"
-  end
-end
-
-calculate_vagrant_url.run_action(:run)
+node.override['vagrant']['url'] = node['rs-cookbooks_ci']['vagrant']['url']
+node.override['vagrant']['checksum'] = node['rs-cookbooks_ci']['vagrant']['checksum']
 
 include_recipe "vagrant"
 
