@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
           :user_email => 'whiteqa@rightscale.com',
           :jobs => {
             :marker => {
-              :git_project_description => 'Resource to create a visual marker in the Chef log based on a template',
+              :git_description => 'Resource to create a visual marker in the Chef log based on a template',
               :git_repo => 'git://github.com/rightscale-cookbooks/marker.git',
               :git_branch => 'master',
               :git_project_url => 'https://github.com/rightscale-cookbooks/marker'

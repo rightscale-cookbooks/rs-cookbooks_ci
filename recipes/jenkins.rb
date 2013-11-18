@@ -44,6 +44,7 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
     source 'job_config.xml.erb'
     mode 0644
     variables({
+      :git_description => job_config['git_description'],
       :git_repo => job_config['git_repo'],
       :git_branch => job_config['git_branch'],
       :git_project_url => job_config['git_project_url']
