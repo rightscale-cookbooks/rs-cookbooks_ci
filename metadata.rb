@@ -48,12 +48,12 @@ attribute "rs-cookbooks_ci/jenkins/password",
 
 attribute "rs-cookbooks_ci/jenkins/user_full_name",
   :display_name => "Jenkins Full Username",
-    :description => "Full username of Jenkins user",
-    :required => "recommended",
-    :recipes => [
-      "rs-cookbooks_ci::default",
-      "rs-cookbooks_ci::jenkins"
-    ]
+  :description => "Full username of Jenkins user",
+  :required => "recommended",
+  :recipes => [
+    "rs-cookbooks_ci::default",
+    "rs-cookbooks_ci::jenkins"
+  ]
 
 attribute "rs-cookbooks_ci/jenkins/user_email",
   :display_name => "Jenkins User Email Address",
