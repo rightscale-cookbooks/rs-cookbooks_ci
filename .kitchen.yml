@@ -20,7 +20,7 @@ suites:
     rs-cookbooks_ci:
       jenkins:
         username: 'qa'
-        password: 'secret11'
+        password: 'qapass'
         user_full_name: 'White Team QA'
         user_email: 'whiteqa@rightscale.com'
         jobs:
@@ -40,7 +40,7 @@ suites:
     rs-cookbooks_ci:
       jenkins:
         username: 'qa'
-        password: 'secret11'
+        password: 'qapass'
         user_full_name: 'White Team QA'
         user_email: 'whiteqa@rightscale.com'
         jobs:
