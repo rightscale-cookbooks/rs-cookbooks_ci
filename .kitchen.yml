@@ -1,27 +1,54 @@
-ver_plugin: vagrant
+---
+driver_plugin: vagrant
 driver_config:
   require_chef_omnibus: true
   log_file: /var/log/chef-solo.log
- 
+
 platforms:
-- name: rightimage-ubuntu-12.04
+- name: opscode-ubuntu-12.04
   driver_config:
-    box: RightImage_Ubuntu_12.04_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/ubuntu/12.04/RightImage_Ubuntu_12.04_x64_v13.5.0.1.box
+    box: opscode-ubuntu-12.04
+    box_url: https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_ubuntu-12.04_provisionerless.box
     customize:
       cpus: 2
       memory: 1024
-- name: rightimage-centos-6.4
-  driver_config:
-    box: RightImage_CentOS_6.4_x64_v13.5.0.1
-    box_url: https://rightscale-vagrant.s3.amazonaws.com/virtualbox/centos/6.4/RightImage_CentOS_6.4_x64_v13.5.0.1.box
-    customize:
-      cpus: 2
-      memory: 1024
- 
+
 suites:
 - name: default
+  run_list: "recipe[rs-cookbooks_ci::default]"
+  attributes:
+    rs-cookbooks_ci:
+      jenkins:
+        username: 'qa'
+        password: 'qapass'
+        user_full_name: 'White Team QA'
+        user_email: 'whiteqa@rightscale.com'
+        jobs:
+          marker:
+            git_project_description: 'Resource to create a visual marker in the Chef log based on a template'
+            git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
+            git_branch: 'master'
+            git_project_url: 'https://github.com/rightscale-cookbooks/marker'
+      git_setup:
+        git_username: 'rightscale-cookbooks-jenkins'
+        git_email:  'cookbooks@rightscale.com'
+
+- name: jenkins
   run_list:
-  - recipe[COOKBOOKNAME::RECIPE1]
-  - recipe[COOKBOOKNAME::RECIPE2]
-  attributes: {}
+    - recipe[rs-cookbooks_ci::jenkins]
+  attributes:
+    rs-cookbooks_ci:
+      jenkins:
+        username: 'qa'
+        password: 'qapass'
+        user_full_name: 'White Team QA'
+        user_email: 'whiteqa@rightscale.com'
+        jobs:
+          marker:
+            git_description: 'Resource to create a visual marker in the Chef log based on a template'
+            git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
+            git_branch: 'master'
+            git_project_url: 'https://github.com/rightscale-cookbooks/marker'
+      git_setup:
+        git_username: 'rightscale-cookbooks-jenkins'
+        git_email:  'cookbooks@rightscale.com'

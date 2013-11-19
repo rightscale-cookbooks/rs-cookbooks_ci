@@ -16,3 +16,4 @@ bin/*
 VERSION
 .kitchen/
 .kitchen.local.yml
+.tm_properties

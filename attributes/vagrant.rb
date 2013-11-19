@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: rs-cookbooks_ci
-# Recipe:: default
+# Attributes:: vagrant
 #
 # Copyright (C) 2013 RightScale, Inc.
 #
@@ -17,11 +17,7 @@
 # limitations under the License.
 #
 
-include_recipe 'apt'
-include_recipe 'xml'
-include_recipe 'rs-cookbooks_ci::jenkins'
-include_recipe 'rs-cookbooks_ci::vagrant'
-include_recipe 'virtualbox'
-include_recipe 'git'
+default['rs-cookbooks_ci']['vagrant']['url'] = 'http://files.vagrantup.com/packages/7ec0ee1d00a916f80b109a298bab08e391945243/vagrant_1.2.7_x86_64.deb'
+default['rs-cookbooks_ci']['vagrant']['checksum'] = '4e6cbbe820fd096355eb0e878436fa3c6468ae5969c60f2a8a3ceb6ec6059c5e'
 
-gem_package 'bundler'
+default['rs-cookbooks_ci']['vagrant']['plugins'] = ['vagrant-berkshelf', 'vagrant-omnibus', 'bindler']
