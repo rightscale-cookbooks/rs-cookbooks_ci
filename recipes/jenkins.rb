@@ -31,7 +31,7 @@ node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['use
 
 include_recipe 'build-essential'
 include_recipe 'ruby::1.9.1'
-include_recipe "jenkins::server"
+include_recipe 'jenkins::server'
 
 # This uses the jenkins_job resource to create jobs using a template. For each job, it creates a temporary config
 # file then populates it using a template (.erb) which is filled out with variables stored in attributes
