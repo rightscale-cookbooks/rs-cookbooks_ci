@@ -17,11 +17,12 @@
 # limitations under the License.
 #
 
+node.override['build_essential']['compiletime'] = true
 
-# Specify that jenkins should install using the war method
-# We are locking to version 1.537 because 1.538 has a bug which chmod's a directory that doesn't exist
+# Specify that jenkins should install using the war method which allows us to specify the version number. There is a
+# defect with the package method which does not respect a user-specified version
 
-default['rs-cookbooks_ci']['jenkins']['server']['version'] = '1.537'
+default['rs-cookbooks_ci']['jenkins']['server']['version'] = '1.540'
 default['rs-cookbooks_ci']['jenkins']['server']['install_method'] = 'war'
 
 # Specifies list of Jenkins plugins installed during initial deployment, not including anything that is bundled, but

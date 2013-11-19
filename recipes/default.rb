@@ -19,8 +19,8 @@
 
 include_recipe 'apt'
 include_recipe 'xml'
-include_recipe 'rs-cookbooks_ci::build-essential'
-include_recipe 'rs-cookbooks_ci::ruby'
+include_recipe 'build-essential'
+include_recipe 'ruby'
 include_recipe 'rs-cookbooks_ci::jenkins'
 include_recipe 'rs-cookbooks_ci::vagrant'
 include_recipe 'virtualbox'

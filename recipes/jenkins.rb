@@ -17,8 +17,8 @@
 # limitations under the License.
 #
 
-node.override['jenkins']['server']['version'] = node['rs-cookbooks_ci']['jenkins']['server']['version']
-node.override['jenkins']['server']['install_method'] = node['rs-cookbooks_ci']['jenkins']['server']['install_method']
+# node.override['jenkins']['server']['version'] = node['rs-cookbooks_ci']['jenkins']['server']['version']
+# node.override['jenkins']['server']['install_method'] = node['rs-cookbooks_ci']['jenkins']['server']['install_method']
 
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks_ci']['jenkins']['server']['plugins']
 
@@ -28,10 +28,15 @@ node.override['jenkins']['password'] = node['rs-cookbooks_ci']['jenkins']['passw
 node.override['jenkins']['user_full_name'] = node['rs-cookbooks_ci']['jenkins']['user_full_name']
 node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['user_email']
 
+
+include_recipe 'build-essential'
+include_recipe 'ruby::1.9.1'
 include_recipe "jenkins::server"
 
 # This uses the jenkins_job resource to create jobs using a template. For each job, it creates a temporary config
 # file then populates it using a template (.erb) which is filled out with variables stored in attributes
+# Initially the job doesn't when it is defined (hence action :nothing). It only kicks off once it is notified by the
+# template.
 
 node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
