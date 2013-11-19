@@ -7,7 +7,7 @@
 }
 
 @test "Check that the correct version for vagrant" {
-  vagrant --version | grep 1\.2\.7
+  vagrant --version | grep '1\.2\.7'
 }
 
 # Check that the following vagrant plugins are installed: vagrant-berkshelf, vagrant-omnibus, bindler
@@ -31,7 +31,7 @@
 }
 
 @test "Check that the correct version of ruby is installed" {
-  ruby -v | grep 1\.9\.3
+  ruby -v | grep '1\.9\.3'
 }
 
 # Check that the jenkins service is running
@@ -56,7 +56,7 @@
   which virtualbox
 }
 
-# Check that git v1.7.9.5 is installed
+# Check that git is installed
 
 @test "Check that git is installed" {
   which git
