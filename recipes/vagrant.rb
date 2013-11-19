@@ -32,7 +32,7 @@ execute "install nokogiri" do
   environment(
     'GEM_PATH' => '/var/lib/jenkins/.vagrant.d/gems'
   )
-  not_if { ::Kernel.system("GEM_PATH=/var/lib/jenkins/.vagrant.d/gems gem list | grep nokogiri") }
+  not_if 'GEM_PATH=/var/lib/jenkins/.vagrant.d/gems gem list | grep nokogiri'
 end
 
 node['rs-cookbooks_ci']['vagrant']['plugins'].each do |plug_name|
