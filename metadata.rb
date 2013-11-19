@@ -19,10 +19,6 @@ depends "git", "~> 2.7.0"
 
 recipe "rs-cookbooks_ci::default",
   "Default recipe to install rs-cookbooks_ci"
-recipe "rs-cookbooks_ci::apt",
-  "Executes apt-get update to ensure the local package cache is up to date"
-recipe "rs-cookbooks_ci::xml",
-  "Installs development packages for libxml"
 recipe "rs-cookbooks_ci::build-essential",
   "Installs compile tools to help with bcrypt-ruby gem required by users recipe in Jenkins cookbook"
 recipe "rs-cookbooks_ci::ruby",
@@ -31,10 +27,6 @@ recipe "rs-cookbooks_ci::jenkins",
   "Installs Jenkins, required plugins, and sets up jobs"
 recipe "rs-cookbooks_ci::vagrant",
   "Installs Vagrant and required plugins"
-recipe "rs-cookbooks_ci::virtualbox",
-  "Installs Virtualbox"
-recipe "rs-cookbooks_ci::git",
-  "Installs Git SCM"
 
 attribute "rs-cookbooks_ci/jenkins/username",
   :display_name => "Jenkins Username",
