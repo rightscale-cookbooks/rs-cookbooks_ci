@@ -18,6 +18,7 @@
 #
 
 node.override['build_essential']['compiletime'] = true
+
 include_recipe 'build-essential'
 include_recipe 'ruby::1.9.1'
 
@@ -33,8 +34,8 @@ include_recipe 'jenkins::server'
 
 # This uses the jenkins_job resource to create jobs using a template. For each job, it creates a temporary config
 # file then populates it using a template (.erb) which is filled out with variables stored in attributes
-# Initially the job doesn't when it is defined (hence action :nothing). It only kicks off once it is notified by the
-# template.
+# Initially the job doesn't do anything when it is defined (hence action :nothing). It only kicks off once it is
+# notified by the template.
 
 node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
