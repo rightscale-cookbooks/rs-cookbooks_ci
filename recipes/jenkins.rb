@@ -17,8 +17,9 @@
 # limitations under the License.
 #
 
-# node.override['jenkins']['server']['version'] = node['rs-cookbooks_ci']['jenkins']['server']['version']
-# node.override['jenkins']['server']['install_method'] = node['rs-cookbooks_ci']['jenkins']['server']['install_method']
+node.override['build_essential']['compiletime'] = true
+include_recipe 'build-essential'
+include_recipe 'ruby::1.9.1'
 
 node.override['jenkins']['server']['plugins'] = node['rs-cookbooks_ci']['jenkins']['server']['plugins']
 
@@ -28,9 +29,6 @@ node.override['jenkins']['password'] = node['rs-cookbooks_ci']['jenkins']['passw
 node.override['jenkins']['user_full_name'] = node['rs-cookbooks_ci']['jenkins']['user_full_name']
 node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['user_email']
 
-
-include_recipe 'build-essential'
-include_recipe 'ruby::1.9.1'
 include_recipe 'jenkins::server'
 
 # This uses the jenkins_job resource to create jobs using a template. For each job, it creates a temporary config
