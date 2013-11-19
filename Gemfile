@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 2.0.10'
+gem 'berkshelf'
 gem 'thor-foodcritic'
 gem 'thor-scmversion'
 
