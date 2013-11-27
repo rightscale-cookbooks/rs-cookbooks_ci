@@ -18,6 +18,7 @@
 #
 
 node.override['build_essential']['compiletime'] = true
+node.override['virtualbox']['version'] = '4.3'
 
 include_recipe 'build-essential'
 include_recipe 'ruby::1.9.1'
@@ -59,13 +60,38 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 end
 
 # Create Git credentials using a template and store it as a config file in the Jenkins root
-template node['rs-cookbooks_ci']['jenkins']['git_setup']['config_file'] do
+template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['file_path'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
   mode 0644
   variables({
-    :git_username => node['rs-cookbooks_ci']['jenkins']['git_setup']['username'],
-    :git_email => node['rs-cookbooks_ci']['jenkins']['git_setup']['email']
+    :git_username => node['rs-cookbooks_ci']['jenkins']['config']['git_config']['username'],
+    :git_email => node['rs-cookbooks_ci']['jenkins']['config']['git_config']['email']
+  })
+end
+
+# Specify the Jenkins url and email using a template and store it as a config file in the Jenkins root
+template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['file_path'] do
+  source 'jenkins_location_config.xml.erb'
+  owner 'jenkins'
+  group 'jenkins'
+  mode 0644
+  variables({
+    :jenkins_url => node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['url'],
+    :jenkins_admin_email => node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['email']
+  })
+end
+
+# Specify the Jenkins Github Pull Request Builder configuration using a template and store it as a config file in the
+# Jenkins root
+template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['file_path'] do
+  source 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml.erb'
+  owner 'jenkins'
+  group 'jenkins'
+  mode 0644
+  variables({
+    :ghprb_access_token => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
+    :ghprb_admins => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins']
   })
 end

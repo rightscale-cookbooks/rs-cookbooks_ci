@@ -49,6 +49,15 @@ suites:
             git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
             git_branch: 'master'
             git_project_url: 'https://github.com/rightscale-cookbooks/marker'
-      git_setup:
-        git_username: 'rightscale-cookbooks-jenkins'
-        git_email:  'cookbooks@rightscale.com'
+      config:
+          git_config:
+            git_username: 'rightscale-cookbooks-jenkins'
+            git_email:  'cookbooks@rightscale.com'
+          jenkins_location:
+            url: 'http://33.33.33.10:8080/'
+            email: 'name@mycompany.com'
+          # The token below refers to the Github Access Token, which you must generate for your account
+          # The one inserted here is just a throwaway one and needs to be overridden
+          ghprb:
+            token: 'e72e16c7e42f292c6912e7710c838347ae178b4a'
+            admins: 'test-admin1 test-admin2'

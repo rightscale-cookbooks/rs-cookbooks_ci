@@ -32,9 +32,12 @@ default['rs-cookbooks_ci']['jenkins']['server']['plugins'] = [
   'github-api',
   'git',
   'github',
-  'ansicolor'
+  'ansicolor',
+  'ghprb'
 ]
 
 # Specifies path of configuration file created when a user sets a Git username and email. This is required by the
 # Jenkins Git plugin to operate. This file is created automatically by a template.
-default['rs-cookbooks_ci']['jenkins']['git_setup']['config_file'] = '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'
+default['rs-cookbooks_ci']['jenkins']['config']['git_config']['file_path'] = '/var/lib/jenkins/hudson.plugins.git.GitSCM.xml'
+default['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['file_path'] = '/var/lib/jenkins/jenkins.model.JenkinsLocationConfiguration.xml'
+default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['file_path'] = '/var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml'
