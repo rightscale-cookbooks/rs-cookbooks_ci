@@ -60,7 +60,7 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 end
 
 # Create Git credentials using a template and store it as a config file in the Jenkins root
-template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['file_path'] do
+template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['config_file'] do
   source 'git_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
@@ -72,7 +72,7 @@ template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['file_path']
 end
 
 # Specify the Jenkins url and email using a template and store it as a config file in the Jenkins root
-template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['file_path'] do
+template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file'] do
   source 'jenkins_location_config.xml.erb'
   owner 'jenkins'
   group 'jenkins'
@@ -85,7 +85,7 @@ end
 
 # Specify the Jenkins Github Pull Request Builder configuration using a template and store it as a config file in the
 # Jenkins root
-template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['file_path'] do
+template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] do
   source 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml.erb'
   owner 'jenkins'
   group 'jenkins'
