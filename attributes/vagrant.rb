@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-default['rs-cookbooks_ci']['vagrant']['url'] = 'http://files.vagrantup.com/packages/7ec0ee1d00a916f80b109a298bab08e391945243/vagrant_1.2.7_x86_64.deb'
-default['rs-cookbooks_ci']['vagrant']['checksum'] = '4e6cbbe820fd096355eb0e878436fa3c6468ae5969c60f2a8a3ceb6ec6059c5e'
+default['rs-cookbooks_ci']['vagrant']['url'] = 'http://files.vagrantup.com/packages/a40522f5fabccb9ddabad03d836e120ff5d14093/vagrant_1.3.5_x86_64.deb'
+default['rs-cookbooks_ci']['vagrant']['checksum'] = 'db7d06f46e801523d97b6e344ea0e4fe942f630cc20ab1706e4c996872f8cd71'
 
 default['rs-cookbooks_ci']['vagrant']['plugins'] = ['vagrant-berkshelf', 'vagrant-omnibus', 'bindler']

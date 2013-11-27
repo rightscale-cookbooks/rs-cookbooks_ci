@@ -7,7 +7,7 @@
 }
 
 @test "Check that the correct version for vagrant" {
-  vagrant --version | grep '1\.2\.7'
+  vagrant --version | grep '1\.3\.5'
 }
 
 # Check that the following vagrant plugins are installed: vagrant-berkshelf, vagrant-omnibus, bindler

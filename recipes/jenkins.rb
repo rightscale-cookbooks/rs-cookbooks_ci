@@ -32,6 +32,8 @@ node.override['jenkins']['user_email'] = node['rs-cookbooks_ci']['jenkins']['use
 
 include_recipe 'jenkins::server'
 
+node.override['virtualbox']['version'] = 4.3
+
 # This uses the jenkins_job resource to create jobs using a template. For each job, it creates a temporary config
 # file then populates it using a template (.erb) which is filled out with variables stored in attributes
 # Initially the job doesn't do anything when it is defined (hence action :nothing). It only kicks off once it is
