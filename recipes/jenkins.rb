@@ -18,7 +18,6 @@
 #
 
 node.override['build_essential']['compiletime'] = true
-node.override['virtualbox']['version'] = '4.3'
 
 include_recipe 'build-essential'
 include_recipe 'ruby::1.9.1'

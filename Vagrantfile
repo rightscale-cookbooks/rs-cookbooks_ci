@@ -100,7 +100,7 @@ Vagrant.configure('2') do |config|
             'ghprb' => {
               # The token below refers to the Github Access Token, which you must generate for your account
               # The one inserted here is just a throwaway one and needs to be overridden
-              'token' => 'e72e16c7e42f292c6912e7710c838347ae178b4a',
+              'token' => 'thisIsAFakeToken',
               'admins' => 'test-admin1'
             }
           }
