@@ -42,5 +42,5 @@ default['rs-cookbooks_ci']['jenkins']['config']['git_config']['config_file'] =
   "#{node['jenkins']['server']['home']}/hudson.plugins.git.GitSCM.xml"
 default['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file'] =
   "#{node['jenkins']['server']['home']}/jenkins.model.JenkinsLocationConfiguration.xml"
-default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] =
-  "#{node['jenkins']['server']['home']}/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml"
+# default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] =
+#   "#{node['jenkins']['server']['home']}/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml"
