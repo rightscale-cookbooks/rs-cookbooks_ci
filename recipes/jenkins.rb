@@ -72,7 +72,7 @@ end
 
 # Specify the Jenkins url and email using a template and store it as a config file in the Jenkins root
 template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file'] do
-  source 'jenkins_location_config.xml.erb'
+  source 'JenkinsLocationConfiguration.xml.erb'
   owner 'jenkins'
   group 'jenkins'
   mode 0644
@@ -84,13 +84,13 @@ end
 
 # Specify the Jenkins Github Pull Request Builder configuration using a template and store it as a config file in the
 # Jenkins root
-template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] do
-  source 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml.erb'
-  owner 'jenkins'
-  group 'jenkins'
-  mode 0644
-  variables({
-    :ghprb_access_token => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
-    :ghprb_admins => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins']
-  })
-end
+# template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] do
+#   source 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml.erb'
+#   owner 'jenkins'
+#   group 'jenkins'
+#   mode 0644
+#   variables({
+#     :ghprb_access_token => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
+#     :ghprb_admins => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins']
+#   })
+# end
