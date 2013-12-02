@@ -6,8 +6,12 @@
   which vagrant
 }
 
-@test "Check that the correct version for vagrant" {
+@test "Check that the correct version for vagrant is installed" {
   vagrant --version | grep '1\.3\.5'
+}
+
+@test "Check that the correct version of virtualbox is installed" {
+  vboxmanage -v | grep '4\.3'
 }
 
 # Check that the following vagrant plugins are installed: vagrant-berkshelf, vagrant-omnibus, bindler
