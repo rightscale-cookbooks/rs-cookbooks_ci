@@ -11,7 +11,7 @@
 }
 
 @test "Check that the correct version of virtualbox is installed" {
-  vboxmanage -v | grep '4\.3'
+  vboxmanage -version | grep '^4\.3'
 }
 
 # Check that the following vagrant plugins are installed: vagrant-berkshelf, vagrant-omnibus, bindler
