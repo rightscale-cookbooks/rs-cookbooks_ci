@@ -83,13 +83,15 @@ template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['confi
 end
 
 # Create the ghprb configuration file in jenkins root if it doesn't exist. The action is important because we don't
-# want to overwrite the file each time we provision
+# want to overwrite the file each time we converge. Also, this xml file is unusual in that it is used for both
+# configuration and data storage so overwriting this file will wipe out any saved data.
 cookbook_file "org.jenkinsci.plugins.ghprb.GhprbTrigger.xml" do
   path node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file']
   action :create_if_missing
 end
 
-#Checks the 'customizations' hash to see what lines we want to replace in the ghprb configuration file
+# Checks the 'customizations' hash to see what lines we want to replace in the GitHub Pull Request Builder configuration
+# file
 node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'].each do |key, value|
   new_value =
     if value.nil?
