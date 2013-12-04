@@ -82,15 +82,24 @@ template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['confi
   })
 end
 
-# Specify the Jenkins Github Pull Request Builder configuration using a template and store it as a config file in the
-# Jenkins root
-# template node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] do
-#   source 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml.erb'
-#   owner 'jenkins'
-#   group 'jenkins'
-#   mode 0644
-#   variables({
-#     :ghprb_access_token => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
-#     :ghprb_admins => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins']
-#   })
-# end
+# Create the ghprb configuration file in jenkins root if it doesn't exist. The action is important because we don't
+# want to overwrite the file each time we provision
+cookbook_file "org.jenkinsci.plugins.ghprb.GhprbTrigger.xml" do
+  path node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file']
+  action :create_if_missing
+end
+
+#Checks the 'customizations' hash to see what lines we want to replace in the ghprb configuration file
+node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'].each do |key, value|
+  new_value =
+    if value.nil?
+      "  <#{key}/>"
+   else
+     "  <#{key}>#{value}</#{key}>"
+   end
+ replace_or_add "#{key} -> #{value}" do
+    path node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file']
+    pattern "^\s+<#{key}"
+    line new_value
+  end
+end
