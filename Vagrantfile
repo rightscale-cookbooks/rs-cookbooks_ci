@@ -98,7 +98,7 @@ Vagrant.configure('2') do |config|
               # The token below refers to the Github Access Token, which you must generate for your account
               # The one inserted here is just a throwaway one and needs to be overridden
               'token' => 'thisIsAFakeToken',
-              'admins' => 'test-admin1'
+              'admins' => ['test-admin1', 'test-admin2', 'test-admin3']
             }
           }
         }

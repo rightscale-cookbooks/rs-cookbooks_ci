@@ -61,8 +61,8 @@ end
 # Create Git credentials using a template and store it as a config file in the Jenkins root
 template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['config_file'] do
   source 'git_config.xml.erb'
-  owner 'jenkins'
-  group 'jenkins'
+  owner node['rs-cookbooks_ci']['jenkins']['server']['user']
+  group node['rs-cookbooks_ci']['jenkins']['server']['group']
   mode 0644
   variables({
     :git_username => node['rs-cookbooks_ci']['jenkins']['config']['git_config']['username'],
@@ -72,9 +72,9 @@ end
 
 # Specify the Jenkins url and email using a template and store it as a config file in the Jenkins root
 template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file'] do
-  source 'JenkinsLocationConfiguration.xml.erb'
-  owner 'jenkins'
-  group 'jenkins'
+  source 'jenkins.model.JenkinsLocationConfiguration.xml.erb'
+  owner node['rs-cookbooks_ci']['jenkins']['server']['user']
+  group node['rs-cookbooks_ci']['jenkins']['server']['group']
   mode 0644
   variables({
     :jenkins_url => node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['url'],
@@ -82,24 +82,27 @@ template node['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['confi
   })
 end
 
-# Create the ghprb configuration file in jenkins root if it doesn't exist. The action is important because we don't
-# want to overwrite the file each time we converge. Also, this xml file is unusual in that it is used for both
-# configuration and data storage so overwriting this file will wipe out any saved data.
-cookbook_file "org.jenkinsci.plugins.ghprb.GhprbTrigger.xml" do
+# Create the GitHub Pull Request Builder configuration file in jenkins root if it doesn't exist. The action is
+# important because we don't want to overwrite the file each time we converge. Also, this xml file is unusual in that
+# it is used for both configuration and data storage so overwriting this file will wipe out any saved data.
+cookbook_file 'org.jenkinsci.plugins.ghprb.GhprbTrigger.xml' do
   path node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file']
+  owner node['rs-cookbooks_ci']['jenkins']['server']['user']
+  group node['rs-cookbooks_ci']['jenkins']['server']['group']
   action :create_if_missing
 end
 
 # Checks the 'customizations' hash to see what lines we want to replace in the GitHub Pull Request Builder configuration
-# file
+# If we want to clear the values from a key, we are setting it as nil. Otherwise we set what we want the new value to
+# be and this automatically replaces it, adding in the approriate brackets and spacing.
 node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'].each do |key, value|
   new_value =
     if value.nil?
       "  <#{key}/>"
-   else
-     "  <#{key}>#{value}</#{key}>"
-   end
- replace_or_add "#{key} -> #{value}" do
+    else
+      "  <#{key}>#{value}</#{key}>"
+    end
+  replace_or_add "#{key} -> #{value}" do
     path node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file']
     pattern "^\s+<#{key}"
     line new_value

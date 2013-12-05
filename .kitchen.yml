@@ -60,4 +60,7 @@ suites:
           # The one inserted here is just a throwaway one and needs to be overridden
           ghprb:
             token: 'thisIsAFakeToken'
-            admins: 'test-admin1 test-admin2'
+            admins:
+              - 'test-admin1'
+              - 'test-admin2'
+              - 'test-admin3'

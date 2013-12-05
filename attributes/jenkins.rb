@@ -45,9 +45,9 @@ default['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file
 default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] =
   "#{node['jenkins']['server']['home']}/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml"
 
-#Specifies the values we want to override in the ghprb plugin configuration.
+# Specifies the values we want to override in the ghprb plugin configuration.
 default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'] = {
-  "accessToken" => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
-  "adminlist" => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins'],
-  "cron" => nil
+  'accessToken' => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token'],
+  'adminlist' => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins'].join(" "),
+  'cron' => nil
 }
