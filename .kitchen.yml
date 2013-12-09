@@ -19,19 +19,29 @@ suites:
   attributes:
     rs-cookbooks_ci:
       jenkins:
-        username: 'qa'
-        password: 'qapass'
-        user_full_name: 'White Team QA'
-        user_email: 'whiteqa@rightscale.com'
+        username: qa
+        password: qapass
+        user_full_name: White Team QA
+        user_email: whiteqa@rightscale.com
         jobs:
           marker:
-            git_project_description: 'Resource to create a visual marker in the Chef log based on a template'
-            git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
-            git_branch: 'master'
-            git_project_url: 'https://github.com/rightscale-cookbooks/marker'
-      git_setup:
-        git_username: 'rightscale-cookbooks-jenkins'
-        git_email:  'cookbooks@rightscale.com'
+            git_project_description: Resource to create a visual marker in the Chef log based on a template
+            git_repo: git://github.com/rightscale-cookbooks/marker.git
+            git_branch: master
+            git_project_url: https://github.com/rightscale-cookbooks/marker
+        config:
+          git_setup:
+            git_username: rightscale-cookbooks-jenkins
+            git_email:  cookbooks@rightscale.com
+          jenkins_location:
+            url: http://33.33.33.10:8080/
+            email: name@mycompany.com
+          ghprb:
+            token: thisIsAFakeToken
+            admins:
+            - test-admin1
+            - test-admin2
+            - test-admin3
 
 - name: jenkins
   run_list:
@@ -39,28 +49,28 @@ suites:
   attributes:
     rs-cookbooks_ci:
       jenkins:
-        username: 'qa'
-        password: 'qapass'
-        user_full_name: 'White Team QA'
-        user_email: 'whiteqa@rightscale.com'
+        username: qa
+        password: qapass
+        user_full_name: White Team QA
+        user_email: whiteqa@rightscale.com
         jobs:
           marker:
-            git_description: 'Resource to create a visual marker in the Chef log based on a template'
-            git_repo: 'git://github.com/rightscale-cookbooks/marker.git'
-            git_branch: 'master'
-            git_project_url: 'https://github.com/rightscale-cookbooks/marker'
-      config:
-          git_config:
-            git_username: 'rightscale-cookbooks-jenkins'
-            git_email:  'cookbooks@rightscale.com'
-          jenkins_location:
-            url: 'http://33.33.33.10:8080/'
-            email: 'name@mycompany.com'
-          # The token below refers to the Github Access Token, which you must generate for your account
-          # The one inserted here is just a throwaway one and needs to be overridden
-          ghprb:
-            token: 'thisIsAFakeToken'
-            admins:
-              - 'test-admin1'
-              - 'test-admin2'
-              - 'test-admin3'
+            git_description: Resource to create a visual marker in the Chef log based on a template
+            git_repo: git://github.com/rightscale-cookbooks/marker.git
+            git_branch: master
+            git_project_url: https://github.com/rightscale-cookbooks/marker
+        config:
+            git_config:
+              username: rightscale-cookbooks-jenkins
+              email:  cookbooks@rightscale.com
+            jenkins_location:
+              url: http://33.33.33.10:8080/
+              email: name@mycompany.com
+            # The token below refers to the Github Access Token, which you must generate for your account
+            # The one inserted here is just a throwaway one and needs to be overridden
+            ghprb:
+              token: thisIsAFakeToken
+              admins:
+              - test-admin1
+              - test-admin2
+              - test-admin3
