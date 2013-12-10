@@ -51,7 +51,9 @@ node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
       :git_description => job_config['git_description'],
       :git_repo => job_config['git_repo'],
       :git_branch => job_config['git_branch'],
-      :git_project_url => job_config['git_project_url']
+      :git_project_url => job_config['git_project_url'],
+      # We want to make sure the admins list is added for each job
+      :job_admins_list => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['admins'].join(' ')
     })
     notifies :update, "jenkins_job[#{job_name}]", :immediately
   end
@@ -65,8 +67,8 @@ template node['rs-cookbooks_ci']['jenkins']['config']['git_config']['config_file
   group node['rs-cookbooks_ci']['jenkins']['server']['group']
   mode 0644
   variables({
-    :git_username => node['rs-cookbooks_ci']['jenkins']['config']['git_config']['username'],
-    :git_email => node['rs-cookbooks_ci']['jenkins']['config']['git_config']['email']
+    :git_username => node['rs-cookbooks_ci']['jenkins']['config']['git_setup']['username'],
+    :git_email => node['rs-cookbooks_ci']['jenkins']['config']['git_setup']['email']
   })
 end
 

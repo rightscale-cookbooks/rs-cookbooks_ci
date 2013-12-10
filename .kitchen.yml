@@ -60,7 +60,7 @@ suites:
             git_branch: master
             git_project_url: https://github.com/rightscale-cookbooks/marker
         config:
-            git_config:
+            git_setup:
               username: rightscale-cookbooks-jenkins
               email:  cookbooks@rightscale.com
             jenkins_location:

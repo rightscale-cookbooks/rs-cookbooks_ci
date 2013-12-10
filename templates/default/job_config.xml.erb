@@ -24,7 +24,9 @@
     </branches>
     <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
     <submoduleCfg class="list"/>
-    <extensions/>
+    <extensions>
+      <hudson.plugins.git.extensions.impl.WipeWorkspace/>
+    </extensions>
   </scm>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
@@ -36,7 +38,7 @@
     </com.cloudbees.jenkins.GitHubPushTrigger>
     <org.jenkinsci.plugins.ghprb.GhprbTrigger plugin="ghprb@1.9">
       <spec></spec>
-      <adminlist/>
+      <adminlist><%= @job_admins_list =%></adminlist>
       <whitelist></whitelist>
       <orgslist></orgslist>
       <cron></cron>
@@ -51,8 +53,8 @@
   <builders>
     <hudson.tasks.Shell>
       <command>bundle install --path .gems
-bundle exec strainer test --except kitchen
-bundle exec kitchen test --parallel</command>
+bundle exec strainer test
+</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

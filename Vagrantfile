@@ -86,7 +86,7 @@ Vagrant.configure('2') do |config|
             }
           },
           'config' => {
-            'git_config' => {
+            'git_setup' => {
               'username' => 'rightscale-cookbooks-jenkins',
               'email' => 'cookbooks@rightscale.com'
             },
