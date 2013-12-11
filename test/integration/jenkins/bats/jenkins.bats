@@ -61,3 +61,18 @@
 @test "Check that the cron field is emptied" {
   grep  "<cron></cron>" /var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml
 }
+
+# Check that the GitHub Push Trigger config file is created and configured correctly
+
+@test "Check that the GitHub Pull Request Builder config file is created" {
+  test -f "/var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml"
+}
+
+@test "Check that the specified username is in the config file" {
+  grep  "qabot" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
+}
+
+@test "Check that the specified token is in the config file" {
+  grep  "thisIsAFakeToken" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
+}
+
