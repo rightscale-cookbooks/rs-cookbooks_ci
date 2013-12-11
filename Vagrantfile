@@ -81,7 +81,6 @@ Vagrant.configure('2') do |config|
             'marker' => {
               'git_description' => 'Resource to create a visual marker in the Chef log based on a template',
               'git_repo' => 'git://github.com/rightscale-cookbooks/marker.git',
-              'git_branch' => 'master',
               'git_project_url' => 'https://github.com/rightscale-cookbooks/marker'
             }
           },
@@ -99,6 +98,9 @@ Vagrant.configure('2') do |config|
               # The one inserted here is just a throwaway one and needs to be overridden
               'token' => 'thisIsAFakeToken',
               'admins' => ['test-admin1', 'test-admin2', 'test-admin3']
+            },
+            'webhook' => {
+              'bot_username' => 'qabot'
             }
           }
         }

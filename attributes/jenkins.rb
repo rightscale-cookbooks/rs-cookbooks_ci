@@ -44,6 +44,8 @@ default['rs-cookbooks_ci']['jenkins']['config']['jenkins_location']['config_file
   "#{node['jenkins']['server']['home']}/jenkins.model.JenkinsLocationConfiguration.xml"
 default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['config_file'] =
   "#{node['jenkins']['server']['home']}/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml"
+  default['rs-cookbooks_ci']['jenkins']['config']['webhook']['config_file'] =
+    "#{node['jenkins']['server']['home']}/com.cloudbees.jenkins.GitHubPushTrigger.xml"
 
 # Specifies the values we want to override in the ghprb plugin configuration.
 default['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'] = {

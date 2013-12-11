@@ -110,3 +110,15 @@ node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['customizations'].each do 
     line new_value
   end
 end
+
+# Allow the GitHub Web Hooks to be managed automatically
+template node['rs-cookbooks_ci']['jenkins']['config']['webhook']['config_file'] do
+  source 'com.cloudbees.jenkins.GitHubPushTrigger.xml.erb'
+  owner node['rs-cookbooks_ci']['jenkins']['server']['user']
+  group node['rs-cookbooks_ci']['jenkins']['server']['group']
+  mode 0644
+  variables({
+    :bot_username => node['rs-cookbooks_ci']['jenkins']['config']['webhook']['bot_username'],
+    :bot_token => node['rs-cookbooks_ci']['jenkins']['config']['ghprb']['token']
+  })
+end
