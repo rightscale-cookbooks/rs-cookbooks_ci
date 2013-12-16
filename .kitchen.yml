@@ -42,7 +42,7 @@ suites:
             - test-admin2
             - test-admin3
           webhook:
-            bot_username: qa
+            bot_username: qabot
 
 - name: jenkins
   run_list:
@@ -75,4 +75,4 @@ suites:
               - test-admin2
               - test-admin3
             webhook:
-              bot_username: qa
+              bot_username: qabot
