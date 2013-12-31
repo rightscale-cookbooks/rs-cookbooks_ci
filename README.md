@@ -4,11 +4,9 @@
 
 This cookbook providesd recipes to setup a Jenkins build system for the purpose of continuous intgegration (CI) testing of Cookbooks.
 
-Github Repository: [https://github.com/rightscale-cookbooks/rs-cookbooks_ci](https://github.com/rightscale-cookbooks/rs-cookbooks_ci)
-
 # Requirements
-* Chef 11 or higher
-* Ubuntu installation, preferbly Ubuntu Server v12.04
+Requires an Ubuntu installation, preferbly Ubuntu Server v12.04
+>>>>>>> Initial commit of README.md file
 
 # Usage
 To setup a continuous integration (CI) server, add a depdency to your cookbook's `metadata.rb`
