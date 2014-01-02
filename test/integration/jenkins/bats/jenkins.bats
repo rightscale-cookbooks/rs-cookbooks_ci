@@ -69,10 +69,10 @@
 }
 
 @test "Check that the specified username is in the config file" {
-  grep  "qabot" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
+  grep  "<username>qabot</username>" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
 }
 
 @test "Check that the specified token is in the config file" {
-  grep  "thisIsAFakeToken" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
+  grep  "<oauthAccessToken>thisIsAFakeToken</oauthAccessToken>" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
 }
 
