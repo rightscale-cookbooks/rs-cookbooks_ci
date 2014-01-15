@@ -50,12 +50,8 @@
   test -f "/var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml"
 }
 
-@test "Check that the specified Jenkins email is in the config file" {
-  grep  "thisIsAFakeToken" /var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml
-}
-
 @test "Check that the admins list is in the config file" {
-  grep  "test-admin1 test-admin2 test-admin3" /var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml
+  grep  "<adminlist>test-admin1 test-admin2 test-admin3</adminlist>" /var/lib/jenkins/org.jenkinsci.plugins.ghprb.GhprbTrigger.xml
 }
 
 @test "Check that the cron field is emptied" {
