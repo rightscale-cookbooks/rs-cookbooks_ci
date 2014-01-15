@@ -81,13 +81,27 @@ Vagrant.configure('2') do |config|
             'marker' => {
               'git_description' => 'Resource to create a visual marker in the Chef log based on a template',
               'git_repo' => 'git://github.com/rightscale-cookbooks/marker.git',
-              'git_branch' => 'master',
               'git_project_url' => 'https://github.com/rightscale-cookbooks/marker'
             }
           },
-          'git_setup' => {
-            'username' => 'rightscale-cookbooks-jenkins',
-            'email' => 'cookbooks@rightscale.com'
+          'config' => {
+            'git_setup' => {
+              'username' => 'rightscale-cookbooks-jenkins',
+              'email' => 'cookbooks@rightscale.com'
+            },
+            'jenkins_location' => {
+              'url' => 'http://33.33.33.10:8080/',
+              'email' => 'name@mycompany.com'
+            },
+            'ghprb' => {
+              # The token below refers to the Github Access Token, which you must generate for your account
+              # The one inserted here is just a throwaway one and needs to be overridden
+              'token' => 'thisIsAFakeToken',
+              'admins' => ['test-admin1', 'test-admin2', 'test-admin3']
+            },
+            'webhook' => {
+              'bot_username' => 'qabot'
+            }
           }
         }
       }
