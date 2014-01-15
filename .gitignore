@@ -17,3 +17,4 @@ VERSION
 .kitchen/
 .kitchen.local.yml
 .tm_properties
+.DS_Store
