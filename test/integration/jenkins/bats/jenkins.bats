@@ -2,6 +2,11 @@
 
 # Check that the jenkins service is running
 
+@test "Temporary test to get CI to build on merge branch. Remove when done" {
+  service jenkins status
+}
+
+
 @test "Check that the jenkins service running" {
   service jenkins status
 }
