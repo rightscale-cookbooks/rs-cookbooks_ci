@@ -72,3 +72,7 @@
   grep  "<oauthAccessToken>thisIsAFakeToken</oauthAccessToken>" /var/lib/jenkins/com.cloudbees.jenkins.GitHubPushTrigger.xml
 }
 
+@test "Check that the pull request jobs are building the correct spec branch" {
+  grep -E "<name>\\$\{sha1\}</name>" /var/lib/jenkins/jobs/marker_pr/config.xml
+}
+

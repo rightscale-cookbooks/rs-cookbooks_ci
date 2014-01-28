@@ -38,8 +38,9 @@ node.override['virtualbox']['version'] = '4.3'
 # file then populates it using a template (.erb) which is filled out with variables stored in attributes
 # Initially the job doesn't do anything when it is defined (hence action :nothing). It only kicks off once it is
 # notified by the template. We are creating two jobs for every repo we want to test. The first is testing pushes to
-# master and the second is for monitoring pull requests. It only creates the second job if the boolean value is
-# set to true. This gives the option of having repos tracked and tested on master only or master and pull requests
+# master and the second is for monitoring pull requests. It only creates the second job if the boolean value,
+# pull_request_builder_enabled is set to true. This gives the option of having repos tracked and tested on master only
+# or master and pull requests
 
 node['rs-cookbooks_ci']['jenkins']['jobs'].each do |job_name, job_config|
 
