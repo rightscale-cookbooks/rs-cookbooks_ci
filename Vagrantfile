@@ -81,7 +81,8 @@ Vagrant.configure('2') do |config|
             'marker' => {
               'git_description' => 'Resource to create a visual marker in the Chef log based on a template',
               'git_repo' => 'git://github.com/rightscale-cookbooks/marker.git',
-              'git_project_url' => 'https://github.com/rightscale-cookbooks/marker'
+              'git_project_url' => 'https://github.com/rightscale-cookbooks/marker',
+              'pull_request_builder_enabled' => true
             }
           },
           'config' => {
