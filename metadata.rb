@@ -4,7 +4,7 @@ maintainer_email 'cookbooks@rightscale.com'
 license          'Apache 2.0'
 description      'Installs/Configures rs-cookbooks_ci'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.2'
+version          '0.2.3'
 
 supports "ubuntu"
 
@@ -15,7 +15,7 @@ depends "ruby", "~> 0.9.0"
 depends "line", "~> 0.5.1"
 depends "jenkins", "~> 1.2.0"
 depends "vagrant", "~> 0.2.0"
-depends "virtualbox", "~> 1.0.0"
+depends "virtualbox", "~> 1.0.2"
 depends "git", "~> 2.7.0"
 
 recipe "rs-cookbooks_ci::default",
