@@ -34,9 +34,3 @@ execute 'install nokogiri' do
   )
   not_if 'GEM_PATH=/var/lib/jenkins/.vagrant.d/gems gem list | grep nokogiri'
 end
-
-node['rs-cookbooks_ci']['vagrant']['plugins'].each do |plug_name|
-  vagrant_plugin plug_name do
-    user 'jenkins'
-  end
-end
