@@ -7,25 +7,11 @@
 }
 
 @test "Check that the correct version for vagrant is installed" {
-  vagrant --version | grep '1\.3\.5'
+  vagrant --version | grep '1\.4\.3'
 }
 
 @test "Check that the correct version of virtualbox is installed" {
   vboxmanage --version | grep '^4\.3'
-}
-
-# Check that the following vagrant plugins are installed: vagrant-berkshelf, vagrant-omnibus, bindler
-
-@test "Check that the vagrant-berkshelf plugin is installed" {
-  sudo -i -u jenkins vagrant plugin list | grep vagrant-berkshelf
-}
-
-@test "Check that the vagrant-omnibus plugin is installed" {
-  sudo -i -u jenkins vagrant plugin list | grep vagrant-omnibus
-}
-
-@test "Check that the bindler plugin is installed" {
-  sudo -i -u jenkins vagrant plugin list | grep bindler
 }
 
 # Check that Ruby v1.9.3 is installed
