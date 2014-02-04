@@ -19,3 +19,4 @@
 
 default['rs-cookbooks_ci']['vagrant']['url'] = 'https://dl.bintray.com/mitchellh/vagrant/vagrant_1.4.3_x86_64.deb'
 default['rs-cookbooks_ci']['vagrant']['checksum'] = 'dbd06de0f3560e2d046448d627bca0cbb0ee34b036ef605aa87ed20e6ad2684b'
+default['rs-cookbooks_ci']['vagrant']['plugins'] = []
