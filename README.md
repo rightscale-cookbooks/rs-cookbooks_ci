@@ -15,6 +15,10 @@ To setup a continuous integration (CI) server, add a depdency to your cookbook's
 
 Include `rs-cookbooks_ci::default` in your runlist.
 
+# Adding a cookbook for testing
+
+The jenkins_job resource is used to automatically create jobs based on the `node['rs-cookbooks_ci']['jenkins']['jobs']` attribute during install. This attribute is generally stored on a managed Chef node, but can also be set in the attributes file. See `.kitchen.yml` for an example.
+
 # Attributes
 These are attributes used in recipes and templates. Only internal attributes are listed. Default values are provided.
 
@@ -53,7 +57,7 @@ These are attributes used in recipes and templates. Only internal attributes are
 All-in-one recipe to run all the recipes in rs-cookbooks_ci cookbook.
 
 ## rs-cookbooks_ci::jenkins
-Installs and sets up `Jenkins` as well as `Ruby` and `build-eseential`
+Installs and sets up `Jenkins` as well as `Ruby` and `build-essential`
 
 ## rs-cookbooks_ci::vagrant
 Installs ands sets up `vagrant`, which is used to deploy VM environments for cookbook testing
