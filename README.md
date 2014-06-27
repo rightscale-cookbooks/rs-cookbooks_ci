@@ -1,5 +1,10 @@
 # rs-cookbooks-ci cookbook
-[![Build Status](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci.png?branch=master)](https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci)
+
+[![Release](https://img.shields.io/github/release/rightscale-cookbooks/rs-cookbooks_ci.svg?style=flat)][release]
+[![Build Status](https://img.shields.io/travis/rightscale-cookbooks/rs-cookbooks_ci.svg?style=flat)][travis]
+
+[release]: https://github.com/rightscale-cookbooks/rs-cookbooks_ci/releases/latest
+[travis]: https://travis-ci.org/rightscale-cookbooks/rs-cookbooks_ci
 
 # Requirements
 
